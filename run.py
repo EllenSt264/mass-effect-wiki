@@ -50,6 +50,17 @@ def gamethree():
     return render_template("gamethree.html", page_title="Squad", squad=data)
 
 
+@app.route("/about/<member_name>")
+def about_member(member_name):
+    member = {}
+    with open("data/squad.json", "r") as json_data:
+        data = json.load(json_data)
+        for obj in data:
+            if obj["url"] == member_name:
+                member = obj
+    return render_template("member.html", member=member)
+
+
 @app.route("/universe")
 def universe():
     return render_template("universe.html", page_title="Universe")
