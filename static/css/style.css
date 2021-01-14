@@ -1,0 +1,154 @@
+body {
+    background-color: #1e2a3d;
+    color: white;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body p {
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 2em;
+    font-size: 16px;
+    color: white;
+}
+
+#headerSubheading {
+    font-size: 20px;
+}
+
+#secondaryNav {
+    position: absolute;
+    background-color: rgb(7 9 10 / 57%); 
+    border-radius: 5px;
+}
+
+#mainNav .navbar-nav > li.nav-item > a:focus, 
+#mainNav .navbar-nav > li.nav-item > a:hover {
+    color: rgba(28, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#mainContainer {
+    background-color: #101b2f;
+    padding: 50px;
+}
+
+.game-link {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.game-link:focus,
+.game-link:hover {
+    color: rgba(206, 39, 39, 0.8);
+    cursor: pointer;
+}
+
+.about-link a {
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.about-link a:focus,
+.about-link a:hover {
+    text-decoration: none;
+    color: rgba(28, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+blockquote {
+    font-family: 'Lora', 'Times New Roman', serif;
+    font-style: italic;
+    color: #868e96;
+    background-color: #1e1e2e;
+    padding-top: 15px;
+    padding-right: 35px;
+    padding-left: 35px;
+    border-radius: 10px;
+}
+
+blockquote p {
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px;
+}
+
+.blockquote-footer {
+    padding: 0;
+    margin: 0;
+    padding-bottom: 25px;
+}
+
+.featurette-divider {
+    background-color: rgb(255 255 255 / 50%);
+}
+
+.row.featurette {
+    padding-bottom: 5rem; 
+    padding-top: 5rem;
+}
+
+.game-heading {
+    text-transform: uppercase;
+    color: #f50013;
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+}
+
+
+.col-6 img {
+    width: 200%;
+    height: 250px;
+}
+
+.img-banner {
+    width: 100%;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    padding-right: 0;
+    padding-left: 0;
+    margin: 0;
+}
+
+.squad-heading a {
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.squad-heading a:hover,
+.squad-heading a:focus
+ {
+    color: rgba(28, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.col-md-5 img {
+    width: 75%;
+}
+
+.profile-img {
+    border-radius: 50%;
+}
+
+#img-right {
+    text-align: right;
+}
+
+.flashes {
+    list-style-type: none;
+    background-color: rgb(7 9 10 / 57%);
+    color: #f50013; 
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    padding: 15px;
+}

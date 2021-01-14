@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'vendor/bootstrap/css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/clean-blog.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css')}}" type="text/css">
+    <title>Mass Effect Wiki</title>
+</head>
+<body id="body">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Mass Effect</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('squad') }}">Squad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('universe') }}">Universe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <header class="masthead" id="hero-image"
+        style="background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/78d17128-eb90-434f-b07a-d318a662b619/de8cn2c-d234b61d-003d-4eeb-84ed-395b0352590a.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNzhkMTcxMjgtZWI5MC00MzRmLWIwN2EtZDMxOGE2NjJiNjE5XC9kZThjbjJjLWQyMzRiNjFkLTAwM2QtNGVlYi04NGVkLTM5NWIwMzUyNTkwYS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.aNeDLYCbbfZlDCHEoaVazyv4Qj8vUzgzwGaOHgzJITQ'); height:55vh;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <!-- Site Heading -->
+                        <h1>Mass Effect</h1>
+                        <span class="subheading" id="headerSubheading">A fan-made wiki site for the Mass Effect Trilogy</span>
+                        
+                        <!-- Secondary Navbar -->
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <nav class="navbar navbar-expand mx-auto mt-0 w-100" id="secondaryNav">
+                                    <ul class="navbar-nav mx-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link game-link" href="{{ url_for('gameone') }}">Mass Effect 1</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link game-link" href="{{ url_for('gametwo') }}">Mass Effect 2</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link game-link" href="{{ url_for('gamethree') }}">Mass Effect 3</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container" id="mainContainer">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <hr>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website <span id="copyright"></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename = 'vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{{ url_for('static', filename = 'js/clean-blog.min.js') }}"></script>
+
+  <script>
+      $("#copyright").text(new Date().getFullYear())
+  </script>
+
+</body>
+</html>

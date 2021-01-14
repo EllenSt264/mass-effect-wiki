@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>{{ page_title }}</h2>
+
+    <!-- Brief Introduction -->
+    <p style="padding-bottom: 5em;">
+        A squad is the group of team members which Commander Shepard or Pathfinder Ryder can select to accompany them on
+        field missions, or while visiting one of the main civilized centers such as a station or planet.
+    </p>
+    
+    <!-- Game Title -->
+    <h3 class="game-heading">Mass Effect 1:</h3>
+
+    <hr class="featurette-divider">
+
+
+    <!-- Squad List -->
+
+    {% for member in squad %}
+
+        {% if member.game_1 == "True" %}
+
+        <div class="row featurette">
+
+            {% if loop.index % 2 != 0 %}
+
+            <div class="col-md-7">
+                <h3 class="squad-heading"><a href="/about/{{ member.url }}">{{ member.name }}</a></h3>
+                <p>{{ member.bio_1 }}</p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ member.image_source }}" alt="Profile image for {{ member.name }}"
+                    class="featurette-image image-responsive profile-img">
+            </div>
+
+            {% else %}
+
+            <div class="col-md-5">
+                <img src="{{ member.image_source }}" alt="Profile image for {{ member.name }}"
+                    class="featurette-image image-responsive profile-img">
+            </div>
+            <div class="col-md-7">
+                <h3 class="squad-heading"><a href="/about/{{ member.url }}">{{ member.name }}</a></h3>
+                <p>{{ member.bio_1 }}</p>
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        <hr class="featurette-divider">
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}

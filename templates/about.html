@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>{{ page_title }}</h2>
+
+    <p>
+        Mass Effect is a science-fiction role-playing action game developed by BioWare for the Xbox 360 and later ported to
+        the PC and the PlayStation 3. It is the first installment of the Mass Effect trilogy.
+    </p>
+
+    <hr class="featurette-divider">
+    
+    <div class="row">
+        <div class="col-md-7 mt-5 mx-auto">
+            <blockquote class="blockquote">
+                <p>
+                    The galaxy is trapped in an endless cycle of extinction. Every 50,000 years, an ancient machine race invades the
+                    galaxy. With ruthless efficiency, the machines wipe out all advanced organic civilization. They leave behind only
+                    the scattered ruins of technology, destroying all evidence of their own existence.
+                
+                    Few believe this ancient legend. You, however, know it to be true. The fight to stop this extinction event has
+                    become the most important mission in the galaxy.
+                
+                    It is your mission. As Commander Shepard of the SSV Normandy, you will take your elite recon squad across a galaxy
+                    in turmoil, in a desperate race to stop the return of an enemy without mercy. To stop this enemy, you must act
+                    without remorse, without hesitation, and outside the limits of the law. Your only imperative is to preserve the
+                    safety of civilized life in the galaxy - at any cost. You must become the tip of the spear of humanity, for you
+                    alone know the full extent of what is at stake if you should fail.
+                </p>
+                <footer class="blockquote-footer">Official Plot Summary</footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3 class="about-link"><a href="{{ url_for('squad') }}">Meet the Squad</a></h3>
+            <div class="row py-5">
+                <div class="col-12 text-center">
+                    <a class="nav-link game-link" href="{{ url_for('gameone') }}">Mass Effect 1</a>
+                    <a class="nav-link game-link" href="{{ url_for('gametwo') }}">Mass Effect 2</a>
+                    <a class="nav-link game-link" href="{{ url_for('gamethree') }}">Mass Effect 3</a>
+                </div>
+            </div>
+
+            <h3 class="about-link"><a href="{{ url_for('universe') }}">Explore the Universe</a></h3>
+        </div>
+    </div>
+
+{% endblock %}
