@@ -143,6 +143,67 @@ blockquote p {
     text-align: right;
 }
 
+iframe {
+    display: block;
+}
+
+.member-video {
+    padding-top: 0;
+    padding-bottom: 5rem;
+}
+
+/* .info-box {
+    background-color:  #1e1e2e;
+    padding: 0;
+    margin: 0;
+}
+
+div.col-md-5.value {
+    width: inherit;
+}
+
+.info-box {
+    background-color: #223;
+    text-align: right;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+} */
+
+.info-box, table, h4, tr, td {
+    width: 100%;
+    background-color: #1e1e2e;
+    font-size: 14px;
+}
+
+#info-box-title {
+    font-size: 22px;
+}
+
+th {
+    text-align: right;
+    background-color: #223;
+    padding-right: 15px;
+    padding-left: 55px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+td {
+    text-align: left;
+    padding-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+/* .info-box .value p {
+    background-color: #1e1e2e;
+    text-align: left;
+    padding: 5px;
+    font-size: 14px;
+} */
+
 .flashes {
     list-style-type: none;
     background-color: rgb(7 9 10 / 57%);

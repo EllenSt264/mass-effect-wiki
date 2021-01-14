@@ -1,13 +1,70 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <h2 class="col-md-12 py-3">{{ member.name }}</h2>
+
+    <hr class="featurette-divider">
+
+    <!-- Squad Member Video -->
+    <div class="member-video">
+        <iframe class="embed-responsive-item mx-auto" width="80%" height="450px" src="{{ member.video }}" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Squad Member Information -->
     <div class="row">
+        <!-- Image / Art -->
         <div class="col-md-5">
-            <img src="{{ member.image_source }}" alt="Profile image for {{ member.name }}">
-            <h2 class="col-md-7">{{ member.name }}</h2>
+            <img src="{{ member.art_source }}" alt="Image for {{ member.name }}">
         </div>
-        <div class="col-md-12">
+        <!-- Info Table -->
+        <div class="col-md-5 text-center info box">
+            <table>
+                <h4 class="col-md-14 py-3" id="info-box-title">{{ member.name }}</h4>
+                <h4 class="col-md-14 py-3" id="info-box-title">{{ member.class }}</h4>
+                <tr>
+                    <th>Race:</th>
+                    <td>{{ member.race }}</td>
+                </tr>
+                <tr>
+                    <th>Gender:</th>
+                    <td>{{ member.gender }}</td>
+                </tr>
+                <tr>
+                    <th>Romance:</th>
+                    <td>{{ member.romance }}</td>
+                </tr>
+                <tr>
+                    <th>Voice Actor:</th>
+                    <td>{{ member.voice_actor }}</td>
+                </tr>
+                <tr>
+                    <th>Appearances:</th>
+                    <td>Mass Effect 1</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>Mass Effect 2</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>Mass Effect 3</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Full Bio -->
+        <div class="col-md-12 pt-4">
+            <h3>Mass Effect 1</h3>
             <p>{{ member.bio_1 }}</p>
+
+            <h3>Mass Effect 2</h3>
+            <p>{{ member.bio_2 }}</p>
+
+            <h3>Mass Effect 3</h3>
+            <p>{{ member.bio_3 }}</p>
         </div>
     </div>
 
