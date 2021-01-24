@@ -10,7 +10,12 @@ if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
 
 
 @app.route("/")
@@ -64,6 +69,21 @@ def about_member(member_name):
             if obj["url"] == member_name:
                 member = obj
     return render_template("member.html", member=member)
+
+
+@app.route("/shepard")
+def shepard():
+    return render_template("shepard.html", page_title="Shepard")
+
+
+@app.route("/login")
+def login():
+    return render_template("login.html", page_title="Log In")
+
+
+@app.route("/register")
+def register():
+    return render_template("register.html", page_title="Register")
 
 
 @app.route("/contact", methods=["GET", "POST"])
