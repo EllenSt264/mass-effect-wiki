@@ -71,16 +71,6 @@ def about_member(member_name):
     return render_template("member.html", member=member)
 
 
-@app.route("/shepard")
-def shepard():
-    return render_template("shepard.html", page_title="Shepard")
-
-
-@app.route("/login")
-def login():
-    return render_template("login.html", page_title="Log In")
-
-
 @app.route("/register", methods=["POST", "GET"])
 def register():
     if request.method == "POST":
@@ -111,6 +101,38 @@ def register():
             return redirect(url_for("shepard", username=session["user"]))
 
     return render_template("register.html", page_title="Register")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # Check if user exists within the database
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()}
+        )
+
+        if existing_user:
+            # Check if hashed password matches user input
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome {}".format(request.form.get("username").capitalize()))
+                    return redirect(url_for("shepard", username=session["user"]))
+            else:
+                # Invalid password
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+        else:
+            # Username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+    
+    return render_template("login.html", page_title="Log In")
+
+
+@app.route("/shepard")
+def shepard():
+    return render_template("shepard.html", page_title="Shepard")
 
 
 @app.route("/contact", methods=["GET", "POST"])
