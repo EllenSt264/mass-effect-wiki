@@ -6,22 +6,12 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
 
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul class="flashes text-center">
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-
-            <form method="POST" name="sentMessage" id="contactForm" novalidate>
+            <form method="POST" action="{{ url_for('register') }}">
                 <!-- Username -->
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
-                        <label>Username</label>
-                        <input type="text" class="form-control text-center" placeholder="Username" username="username" id="username" 
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control text-center" placeholder="Username" name="username" id="username" 
                         minlength="5" maxlength="15" data-validation-required-message="Please enter a username." required>
                         <p class="help-block text-danger"></p>
                     </div>
@@ -29,7 +19,7 @@
                 <!-- Email -->
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
-                        <label>Email Address</label>
+                        <label for="email">Email Address</label>
                         <input type="email" class="form-control text-center" placeholder="Email Address" name="email" id="email"
                         minlength="5" maxlength="30" data-validation-required-message="Please enter your email address." required>
                         <p class="help-block text-danger"></p>
@@ -38,7 +28,7 @@
                 <!-- Password -->
                 <div class="control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Password</label>
+                        <label for="password">Password</label>
                         <input type="tel" class="form-control text-center" placeholder="Password" name="password" id="password"
                         minlength="5" maxlength="15" data-validation-required-message="Please enter a password." required>
                         <p class="help-block text-danger"></p>
@@ -47,7 +37,7 @@
                 <!-- Confirm Password -->
                 <div class="control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Password</label>
+                        <label for="confirmPassword">Password</label>
                         <input type="tel" class="form-control text-center" placeholder="Confrim Password" name="confirmPassword" id="confirmPassword"
                         minlength="5" maxlength="15" data-validation-required-message="Please confirm your password." required>
                         <p class="help-block text-danger"></p>
@@ -57,7 +47,8 @@
                 <div id="success"></div>
                 <!-- Register -->
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary mx-auto" id="sendMessageButton">
+                    <button type="submit" class="btn btn-primary mx-auto"
+                    >
                         Register
                     </button>
                 </div>
