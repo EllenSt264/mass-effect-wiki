@@ -32,7 +32,7 @@
                         <a class="nav-link" href="{{ url_for('squad') }}">Squad</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('shepard') }}">Your Shepard</a>
+                        <a class="nav-link" href="{{ url_for('shepard', username=session['user']) }}">Your Shepard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">Log In</a>

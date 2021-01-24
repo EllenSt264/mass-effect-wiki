@@ -1,8 +1,8 @@
 import os
 import json
 from flask import (
-    Flask, render_template, request, flash, 
-    redirect, session, url_for)
+    Flask, flash, render_template, 
+    redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -71,14 +71,12 @@ def about_member(member_name):
     return render_template("member.html", member=member)
 
 
-@app.route("/register", methods=["POST", "GET"])
+@app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-
         # Check if user already exisits in the database
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()}
-        )
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username already exists")
@@ -108,8 +106,7 @@ def login():
     if request.method == "POST":
         # Check if user exists within the database
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()}
-        )
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             # Check if hashed password matches user input
@@ -117,7 +114,8 @@ def login():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome {}".format(request.form.get("username").capitalize()))
-                    return redirect(url_for("shepard", username=session["user"]))
+                    return redirect(
+                        url_for("shepard", username=session["user"]))
             else:
                 # Invalid password
                 flash("Incorrect Username and/or Password")
@@ -130,9 +128,16 @@ def login():
     return render_template("login.html", page_title="Log In")
 
 
-@app.route("/shepard")
-def shepard():
-    return render_template("shepard.html", page_title="Shepard")
+@app.route("/shepard/<username>", methods=["GET", "POST"])
+def shepard(username):
+    # Grab session user's username from the database
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+
+    if session["user"]:
+        return render_template("shepard.html", username=username)
+
+    return redirect(url_for("login"))
 
 
 @app.route("/contact", methods=["GET", "POST"])
