@@ -1,6 +1,11 @@
 import os
 import json
-from flask import Flask, render_template, request, flash
+from flask import (
+    Flask, render_template, request, flash, 
+    redirect, session, url_for)
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -59,11 +64,6 @@ def about_member(member_name):
             if obj["url"] == member_name:
                 member = obj
     return render_template("member.html", member=member)
-
-
-@app.route("/universe")
-def universe():
-    return render_template("universe.html", page_title="Universe")
 
 
 @app.route("/contact", methods=["GET", "POST"])
