@@ -142,37 +142,30 @@ def shepard(username):
     return redirect(url_for("login"))
 
 
-@app.route("/build_shepard/<username>")
+@app.route("/shepard/<username>/build_shepard")
 def build_shepard(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"].capitalize()
-
-    return render_template("build_shepard.html", username=username)
+    return render_template("build_shepard.html", username=session["user"])
 
 
-@app.route("/mass_effect_1/<username>")
+@app.route("/shepard/<username>/build_shepard/mass_effect_1", methods=["GET", "POST"])
 def mass_effect_1(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"].capitalize()
 
-    return render_template("mass_effect_1.html", username=username)
+    if request.method == "POST":
+        shepard = {
+            "created_by": session["user"],
+            "gender": request.form.getlist("gender"),
+            "service_history": request.form.getlist("service-history"),
+            "psychological_profile": request.form.getlist("psychological-profile"),
+            "class": request.form.getlist("class")
+        }
 
+        if session["user"]:
+            
+            mongo.db.mass_effect_1.insert_one(shepard)
+            flash("Profile Sucessfully Constructed")
+            return redirect(url_for("shepard", username=session["user"]))
 
-@app.route("/mass_effect_2/<username>")
-def mass_effect_2(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"].capitalize()
-
-    return render_template("mass_effect_2.html", username=username)
-
-
-@app.route("/mass_effect_3/<username>")
-def mass_effect_3(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"].capitalize()
-
-    return render_template("mass_effect_3.html", username=username)
-
+    return render_template("mass_effect_1.html", username=session["user"])
 
 
 @app.route("/logout")
@@ -193,6 +186,6 @@ def contact():
 
 if __name__ == "__main__":
     app.run(
-        host = os.environ.get("IP"),
-        port = int(os.environ.get("PORT")),
+        #host = os.environ.get("IP"),
+        #port = int(os.environ.get("PORT")),
         debug = True)

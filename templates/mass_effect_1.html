@@ -10,7 +10,7 @@
         </div>
 
         <div class="card-body">
-            <form action="">
+            <form method="POST" action="{{ url_for('mass_effect_1', username=session['user']) }}">
                 <!-- Gender -->
                 <div class="form-group pb-3">
                     <label for="gender" class="text-muted">Gender: </label>
