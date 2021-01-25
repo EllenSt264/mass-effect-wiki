@@ -160,6 +160,15 @@ def mass_effect_1(username):
         }
 
         if session["user"]:
+
+            # Grab session user's username from the database
+            existing_data = mongo.db.mass_effect_1.find_one(
+                {"created_by": session["user"]})["created_by"]
+
+            if existing_data == shepard["created_by"]:
+                flash("You've Already Created Your Profile. ")
+                flash("Please Update Your Existing Data Instead")
+                return redirect(url_for("shepard", username=session["user"]))
             
             mongo.db.mass_effect_1.insert_one(shepard)
             flash("Profile Sucessfully Constructed")
@@ -186,6 +195,6 @@ def contact():
 
 if __name__ == "__main__":
     app.run(
-        #host = os.environ.get("IP"),
-        #port = int(os.environ.get("PORT")),
+        host = os.environ.get("IP"),
+        port = int(os.environ.get("PORT")),
         debug = True)
