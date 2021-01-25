@@ -142,6 +142,39 @@ def shepard(username):
     return redirect(url_for("login"))
 
 
+@app.route("/build_shepard/<username>")
+def build_shepard(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+
+    return render_template("build_shepard.html", username=username)
+
+
+@app.route("/mass_effect_1/<username>")
+def mass_effect_1(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+
+    return render_template("mass_effect_1.html", username=username)
+
+
+@app.route("/mass_effect_2/<username>")
+def mass_effect_2(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+
+    return render_template("mass_effect_2.html", username=username)
+
+
+@app.route("/mass_effect_3/<username>")
+def mass_effect_3(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+
+    return render_template("mass_effect_3.html", username=username)
+
+
+
 @app.route("/logout")
 def logout():
     # Remove user from session cookies

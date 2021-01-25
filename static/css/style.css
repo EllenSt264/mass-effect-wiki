@@ -198,8 +198,42 @@ td {
 .card-header {
     font-weight: 100;
     font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.225);
 }
 
 .card-title span {
     color: rgba(28, 255, 255, 0.8);
+}
+
+.btn-danger-custom {
+    background-color: #ec5222; 
+    border-color: #ec5222;
+}
+
+.btn-danger-custom:focus,
+.btn-danger-custom:hover {
+    background-color: #e2461f;
+    border-color: #e2461f;
+}
+
+.card.profile-construction {
+    background-color: #29293e;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.555);
+}
+
+.profile-construction .card-header {
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.profile-construction label {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }

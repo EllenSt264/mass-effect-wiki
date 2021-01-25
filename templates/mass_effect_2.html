@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="game-heading text-center">Mass Effect 2</h3>
+
+    <div class="card text-white mb-3 p-3 mx-auto text-center profile-construction">
+
+        <div class="card-header text-muted">
+            Profile Construction
+        </div>
+
+        <div class="card-body">
+            <form action="">
+                <!-- Class -->
+                <div class="form-group pb-3">
+                    <label for="class" class="text-muted">Class: </label>
+                    <select name="class" id="class" class="form-control w-50 mx-auto">
+                        <option value="Soldier">Soldier</option>
+                        <option value="Engineer">Engineer</option>
+                        <option value="Adept">Adept</option>
+                        <option value="Infiltrator">Infiltrator</option>
+                        <option value="Sentinel">Sentinel</option>
+                        <option value="Vanguard">Vanguard</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Create Profile</button>
+            </form>
+        </div>
+
+
+
+        
+    </div>
+
+
+{% endblock %}

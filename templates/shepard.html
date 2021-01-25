@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2 class="col-md-12 py-3">Commander {{ username }} Shepard</h2>
+    <h2 class="col-md-12 py-3 text-center">Commander {{ username }} Shepard</h2>
 
     <!-- If no data exisits -->
     <div class="row">
         <div class="col-12 text-center">
-            <button type=button class="btn btn-danger my-5">Build Your Shepard Now</button>
+            <a href="{{ url_for('build_shepard', username=session['user']) }}" class="btn btn-danger my-5">Build Your Shepard Now</a>
         </div>
     </div>
 
