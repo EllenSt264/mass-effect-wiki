@@ -188,3 +188,18 @@ td {
     border-radius: 5px;
     padding: 15px;
 }
+
+.card {
+    background-color: #1e1e2e;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.card-header {
+    font-weight: 100;
+    font-size: 18px;
+}
+
+.card-title span {
+    color: rgba(28, 255, 255, 0.8);
+}

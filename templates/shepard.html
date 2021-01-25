@@ -3,6 +3,37 @@
 
     <h2 class="col-md-12 py-3">Commander {{ username }} Shepard</h2>
 
+    <!-- If no data exisits -->
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type=button class="btn btn-danger my-5">Build Your Shepard Now</button>
+        </div>
+    </div>
+
+    <!-- Else -->
+    <div class="card text-white mb-3 w-50 mx-auto text-center">
+        {% for shepard in user_shepard %}
+            <div class="card-header text-muted">
+                Mass Effect Game
+            </div>
+
+            <div class="card-body">
+                <div class="card-title">
+                    Commander <span>{{ shepard.username|capitalize }}</span>  Shepard
+                </div>
+                <div class="card-subtitle text-muted">
+                    {{ shepard.gender|capitalize }} <br>
+                    {{ shepard.current_morality|capitalize }} <br>
+                </div>
+                <div class="card-text">
+                    <div class="col-12 text-center">
+                        <button type=button class="btn btn-info my-5">Update Data</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
     <hr class="featurette-divider">
 
 {% endblock %}

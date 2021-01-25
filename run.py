@@ -133,9 +133,11 @@ def shepard(username):
     # Grab session user's username from the database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"].capitalize()
+    
+    user_shepard = list(mongo.db.user_shepard.find())
 
     if session["user"]:
-        return render_template("shepard.html", username=username)
+        return render_template("shepard.html", username=username, user_shepard=user_shepard)
 
     return redirect(url_for("login"))
 
