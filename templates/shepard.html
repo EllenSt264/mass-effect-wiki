@@ -6,34 +6,78 @@
     <!-- If no data exisits -->
     <div class="row">
         <div class="col-12 text-center">
-            <a href="{{ url_for('build_shepard', username=session['user']) }}" class="btn btn-danger my-5">Build Your Shepard Now</a>
+            <a href="{{ url_for('build_shepard', username=session['user']) }}" class="btn btn-danger my-5">Build Your
+                Shepard Now</a>
         </div>
     </div>
 
     <!-- Else -->
-    <div class="card text-white mb-3 w-50 mx-auto text-center">
-        {% for shepard in user_shepard %}
-            <div class="card-header text-muted">
-                Mass Effect Game
-            </div>
-
-            <div class="card-body">
-                <div class="card-title">
-                    Commander <span>{{ shepard.username|capitalize }}</span>  Shepard
+    {% for shepard in mass_effect_1 %}
+        {% if shepard.created_by == session["user"] %}
+            <div class="card text-white mb-3 w-50 mx-auto text-center">
+                <!-- Game Header -->
+                <div class="card-header text-muted">
+                    Mass Effect 1
                 </div>
-                <div class="card-subtitle text-muted">
-                    {{ shepard.gender|capitalize }} <br>
-                    {{ shepard.current_morality|capitalize }} <br>
-                </div>
-                <div class="card-text">
-                    <div class="col-12 text-center">
-                        <button type=button class="btn btn-info my-5">Update Data</button>
+                <!-- Content Body -->
+                <div class="card-body">
+                    <!-- Name -->
+                    <div class="card-title">
+                        Commander <span>{{ shepard.created_by|capitalize }}</span> Shepard
+                    </div>
+                    <!-- Gender and Morality -->
+                    <div class="card-subtitle text-muted pb-5">
+                        {{ shepard.gender|capitalize }} <br>
+                        Current Morality:
+                    </div>
+                    <div class="card-text">
+                        <!-- Collapsible data -->
+                        <div id="accordion">
+                            <div class="card card-inner">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <!-- Reveal data -->
+                                        <button class="btn btn-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Reveal Data
+                                        </button>
+                                    </h5>
+                                </div>
+                                <!-- Data -->
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Service history -->
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                {{ shepard.service_history }}
+                                            </div>
+                                        </div>
+                                        <!-- Psychological profile -->
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                {{ shepard.psychological_profile }}
+                                            </div>
+                                        </div>
+                                        <!-- Class -->
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                {{ shepard.class }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Update -->
+                        <div class="col-12 text-center">
+                            <button type=button class="btn btn-info my-5">Update Data</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-    
+        {% endif %}
+    {% endfor %}
+
     <hr class="featurette-divider">
 
 {% endblock %}
