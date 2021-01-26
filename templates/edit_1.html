@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="game-heading text-center">Mass Effect 1</h3>
+
+    <div class="card text-white mb-3 p-3 mx-auto text-center profile-construction">
+
+        <div class="card-header text-muted">
+            Profile Construction
+        </div>
+
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('edit_1', shepard_id=shepard._id) }}">
+                <!-- Gender -->
+                <div class="form-group pb-3">
+                    <label for="gender" class="text-muted">Gender: </label>
+                    <select name="gender" id="gender" class="form-control w-50 mx-auto">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <!-- Pre-Service History -->
+                <div class="form-group pb-3">
+                    <label for="service-history" class="text-muted">Pre-Service History: </label>
+                    <select name="service-history" id="service-history" class="form-control w-50 mx-auto">
+                        <option value="Spacer">Spacer</option>
+                        <option value="Earthborn">Earthborn</option>
+                        <option value="Colonist">Colonist</option>
+                    </select>
+                </div>
+                <!-- Psychological Profile -->
+                <div class="form-group pb-3">
+                    <label for="psychological-profile" class="text-muted">Psychological Profile: </label>
+                    <select name="psychological-profile" id="psychological-profile" class="form-control w-50 mx-auto">
+                        <option value="Sole Survivor">Sole Survivor</option>
+                        <option value="War Hero">War Hero</option>
+                        <option value="Ruthless">Ruthless</option>
+                    </select>
+                </div>
+                <!-- Class -->
+                <div class="form-group pb-3">
+                    <label for="class" class="text-muted">Class: </label>
+                    <select name="class" id="class" class="form-control w-50 mx-auto">
+                        <option value="Soldier">Soldier</option>
+                        <option value="Engineer">Engineer</option>
+                        <option value="Adept">Adept</option>
+                        <option value="Infiltrator">Infiltrator</option>
+                        <option value="Sentinel">Sentinel</option>
+                        <option value="Vanguard">Vanguard</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Update Profile</button>
+            </form>
+        </div>
+
+
+
+        
+    </div>
+
+
+{% endblock %}

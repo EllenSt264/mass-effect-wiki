@@ -137,8 +137,10 @@ def shepard(username):
     
     user_shepard = list(mongo.db.user_shepard.find())
 
+    mass_effect_1 = list(mongo.db.mass_effect_1.find())
+
     if session["user"]:
-        return render_template("shepard.html", username=username, user_shepard=user_shepard)
+        return render_template("shepard.html", username=username, user_shepard=user_shepard, mass_effect_1=mass_effect_1)
 
     return redirect(url_for("login"))
 
@@ -175,6 +177,26 @@ def mass_effect_1(username):
             return redirect(url_for("shepard", username=session["user"]))
 
     return render_template("mass_effect_1.html", username=session["user"])
+
+
+@app.route("/edit_1/<shepard_id>", methods=["GET", "POST"])
+def edit_1(shepard_id):
+    if request.method == "POST":
+        submit = {
+            "created_by": session["user"],
+            "game_id": "1",
+            "gender": request.form.get("gender"),
+            "service_history": request.form.get("service-history"),
+            "psychological_profile": request.form.get("psychological-profile"),
+            "class": request.form.get("class")
+        }
+        mongo.db.mass_effect_1.update({
+            "_id": ObjectId(shepard_id)}, submit)
+        flash("Profile Successfully Updated")
+        return redirect(url_for("shepard", username=session["user"]))
+    
+    shepard = mongo.db.mass_effect_1.find_one({"_id": ObjectId(shepard_id)})
+    return render_template("edit_1.html", shepard=shepard)
 
 
 @app.route("/logout")
