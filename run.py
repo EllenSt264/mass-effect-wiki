@@ -199,6 +199,14 @@ def edit_1(shepard_id):
     return render_template("edit_1.html", shepard=shepard)
 
 
+@app.route("/delete_profile/<shepard_id>")
+def delete_profile(shepard_id):
+
+    mongo.db.mass_effect_1.remove({"_id": ObjectId(shepard_id)})
+    flash("Profile Sucessfully Deleted")
+    return redirect(url_for("shepard", shepard=shepard, username=session["user"]))
+
+
 @app.route("/logout")
 def logout():
     # Remove user from session cookies
@@ -217,6 +225,6 @@ def contact():
 
 if __name__ == "__main__":
     app.run(
-        host = os.environ.get("IP"),
-        port = int(os.environ.get("PORT")),
+        #host = os.environ.get("IP"),
+        #port = int(os.environ.get("PORT")),
         debug = True)
