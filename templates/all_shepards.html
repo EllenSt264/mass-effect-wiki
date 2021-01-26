@@ -65,21 +65,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="btn-toolbar text-center">
-                        <div class="mx-auto">
-                            <a href="{{ url_for('delete_profile', shepard_id=shepard._id) }}" class="btn btn-warning my-5"
-                            data-toggle="modal" data-target="#exampleModalCenter">
-                                Delete Profile
-                            </a>
+                    <!-- Only show delete and update button if profile belongs to session user -->  
+                    {% if session.user|lower == shepard.created_by|lower %}
+                        <div class="btn-toolbar text-center">
+                            <!-- Delete -->
+                            <div class="mx-auto">
+                                <a href="{{ url_for('delete_profile', shepard_id=shepard._id) }}" class="btn btn-warning my-5"
+                                data-toggle="modal" data-target="#exampleModalCenter">
+                                    Delete Profile
+                                </a>
+                            </div>
+                            <!-- Update -->
+                            <div class="mx-auto">
+                                <a href="{{ url_for('edit_1', shepard_id=shepard._id) }}" class="btn btn-info my-5">
+                                    Update Data
+                                </a>
+                            </div>
                         </div>
-                        <div class="mx-auto">
-                            <a href="{{ url_for('edit_1', shepard_id=shepard._id) }}" class="btn btn-info my-5">
-                                Update Data
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Update -->
-                    
+                    {% endif %}
                 </div>
             </div>
         </div>
