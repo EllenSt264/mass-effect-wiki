@@ -189,6 +189,11 @@ td {
     padding: 15px;
 }
 
+.subtitle {
+    font-size: 25px;
+    font-weight: 600;
+}
+
 .card {
     background-color: #1e1e2e;
     font-weight: 600;

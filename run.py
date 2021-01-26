@@ -129,6 +129,12 @@ def login():
     return render_template("login.html", page_title="Log In")
 
 
+@app.route("/all_shepards")
+def all_shepards():
+    mass_effect_1 = list(mongo.db.mass_effect_1.find())
+    return render_template("all_shepards.html", mass_effect_1=mass_effect_1)
+
+
 @app.route("/shepard/<username>", methods=["GET", "POST"])
 def shepard(username):
     # Grab session user's username from the database
@@ -225,6 +231,6 @@ def contact():
 
 if __name__ == "__main__":
     app.run(
-        #host = os.environ.get("IP"),
-        #port = int(os.environ.get("PORT")),
+        host = os.environ.get("IP"),
+        port = int(os.environ.get("PORT")),
         debug = True)
