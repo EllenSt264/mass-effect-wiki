@@ -154,10 +154,11 @@ def mass_effect_1(username):
     if request.method == "POST":
         shepard = {
             "created_by": session["user"],
-            "gender": request.form.getlist("gender"),
-            "service_history": request.form.getlist("service-history"),
-            "psychological_profile": request.form.getlist("psychological-profile"),
-            "class": request.form.getlist("class")
+            "game_id": "1",
+            "gender": request.form.get("gender"),
+            "service_history": request.form.get("service-history"),
+            "psychological_profile": request.form.get("psychological-profile"),
+            "class": request.form.get("class")
         }
 
         existing_data = mongo.db.mass_effect_1.find_one(
