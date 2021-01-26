@@ -6,6 +6,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import escape
 if os.path.exists("env.py"):
     import env
 
@@ -159,19 +160,17 @@ def mass_effect_1(username):
             "class": request.form.getlist("class")
         }
 
-        if session["user"]:
+        existing_data = mongo.db.mass_effect_1.find_one(
+            {"created_by": session["user"]})
 
-            # Grab session user's username from the database
-            existing_data = mongo.db.mass_effect_1.find_one(
-                {"created_by": session["user"]})["created_by"]
-
-            if existing_data == shepard["created_by"]:
-                flash("You've Already Created Your Profile. ")
-                flash("Please Update Your Existing Data Instead")
-                return redirect(url_for("shepard", username=session["user"]))
-            
+        if existing_data == None:
             mongo.db.mass_effect_1.insert_one(shepard)
             flash("Profile Sucessfully Constructed")
+            return redirect(url_for("shepard", username=session["user"]))
+
+        elif existing_data["created_by"] == shepard["created_by"]:
+            flash("You've Already Created Your Profile. ")
+            flash("Please Update Your Existing Data Instead")
             return redirect(url_for("shepard", username=session["user"]))
 
     return render_template("mass_effect_1.html", username=session["user"])
